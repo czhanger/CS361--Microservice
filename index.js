@@ -22,7 +22,7 @@ wss.on("connection", function connection(ws) {
     let foc = farOrCel(message.toString());
     let num = getNum(message);
     temp = convertTemp(num, foc);
-    if (temp == NaN || foc == "error" || num == Nan) {
+    if (temp == NaN || foc == "error" || num == NaN) {
       temp = ERROR;
     }
     ws.send(`Microservice response: ${temp}`);
@@ -57,4 +57,4 @@ function convertTemp(num, foc) {
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
-server.listen(PORT, () => console.log("Listening on PORT 8080"));
+server.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
