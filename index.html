@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket</title>
+  </head>
+  <body>
+    <label for="messageInput">Message:</label>
+    <input type="text" id="messageInput" />
+    <button onclick="sendMessage()">Send Msg</button>
+    <div>
+      <strong>Server Response:</strong>
+      <p id="serverResponse"></p>
+    </div>
+  </body>
+  <script>
+    const socket = new WebSocket("ws://localhost:8080");
+
+    socket.addEventListener("open", function (event) {
+      console.log("Connected to WS Server");
+    });
+
+    socket.addEventListener("message", function (event) {
+      console.log("Message from server: ", event.data);
+      document.getElementById("serverResponse").innerText = event.data;
+    });
+
+    const sendMessage = () => {
+      const messageInput = document.getElementById("messageInput");
+      const message = messageInput.value;
+      socket.send(message);
+      messageInput.value = ""; // Clear the input field after sending the message
+    };
+  </script>
+</html>
