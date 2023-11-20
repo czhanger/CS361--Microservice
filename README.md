@@ -9,4 +9,5 @@ By default the server is hosted on localhost port 8080, feel free to change the 
 Once connection is established between WebSockets, the temperature conversion requested will be automatically sent back to the client socket. In my example client code, the script listens for a return message and prints out the temperature stored in event.data. However, any websocket receiving process should work. 
 
 <b> UML Sequence Diagram: </b>
+
 ![SCR-20231120-4jo](https://github.com/czhanger/CS361--Microservice/assets/107155998/d5a18a9d-af91-40d9-b96e-d40a46f7577e)
